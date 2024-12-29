@@ -22,6 +22,9 @@ def fruitgen(lastSeg, win, y, x):
         fruitIsAlive = True
 
 def main(win):
+    curses.start_color()
+    curses.init_pair(1, curses.COLOR_RED, curses.COLOR_BLACK)
+    
     winy, winx = win.getmaxyx()
     win.keypad(True)
     curses.curs_set(0)
@@ -34,7 +37,7 @@ def main(win):
         win.clear()
         win.border()
         if fruitIsAlive == True:
-            win.addstr(fruit[0], fruit[1], "*")
+            win.addstr(fruit[0], fruit[1], "*",  curses.color_pair(1))
         for seg in range(len(snake)):
             win.addstr(snake[seg][0], snake[seg][1], "#")
         win.refresh()
